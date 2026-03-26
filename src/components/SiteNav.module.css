@@ -1,0 +1,72 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  color: var(--text-main);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.logo {
+  font-family: var(--font-syne);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.navLinks {
+  display: flex;
+  gap: 3rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.navLinks a {
+  transition: var(--transition-fast);
+}
+
+.navLinks a:hover {
+  color: var(--accent-color);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.langToggle {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.langToggle:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 900px) {
+  .navActions {
+    gap: 1.5rem;
+  }
+  .navLinks {
+    display: none;
+  }
+}

@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  password String
+  name     String?
+}
+
+model Media {
+  id        String   @id @default(cuid())
+  title     String
+  url       String
+  type      String   // "IMAGE" or "VIDEO"
+  category  String   // e.g., "Portraits", "Weddings", "Commercial", "All"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       String?
+  icon        String?
+  createdAt   DateTime @default(now())
+}
+
+model Content {
+  id        String   @id @default(cuid())
+  key       String   @unique // e.g., "hero_title", "hero_subtitle", "about_text"
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// NUEVAS OPCIONES PREMIUM PARA FOTÓGRAFOS
+
+model Testimonial {
+  id         String   @id @default(cuid())
+  clientName String
+  content    String
+  rating     Int      @default(5)
+  createdAt  DateTime @default(now())
+}
+
+model ClientGallery {
+  id          String        @id @default(cuid())
+  slug        String        @unique // URL privada: photografy.studio/client/boda-ana
+  title       String
+  clientName  String
+  password    String        // Contraseña cifrada para que el cliente acceda
+  coverImage  String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
+  images      ClientImage[]
+}
+
+model ClientImage {
+  id              String        @id @default(cuid())
+  url             String
+  clientGalleryId String
+  gallery         ClientGallery @relation(fields: [clientGalleryId], references: [id], onDelete: Cascade)
+  createdAt       DateTime      @default(now())
+}

@@ -1,0 +1,98 @@
+:root {
+  --bg-color: #FDFBF7; /* Pristine Alabaster/Ivory */
+  --bg-alt: #F4F1EA;
+  --text-main: #1A1A1A; /* Deep Charcoal */
+  --text-muted: #666666;
+  --accent-color: #E05236; /* Cinematic Terracotta */
+  --glass-bg: rgba(253, 251, 247, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  
+  --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='dark'] {
+  --bg-color: #101010; /* Pitch dark canvas */
+  --bg-alt: #161616; /* Subdued card background */
+  --text-main: #FDFBF7; /* Soft Ivory for reading */
+  --text-muted: #A0A0A0; /* Mid gray */
+  /* Accent color remains the same or slightly richer to pop on black */
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Typography Utilities */
+.font-serif {
+  font-family: var(--font-playfair), serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+/* Clear, sharp aesthetics. No more pure glassmorphism. */
+.glass-panel {
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--text-main);
+}
+
+/* Premium Animations */
+@keyframes clipReveal {
+  from {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-clip {
+  animation: clipReveal 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}

@@ -1,0 +1,78 @@
+.editable {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s ease;
+  border-bottom: 2px dashed transparent;
+}
+
+.editable:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+.editIcon {
+  opacity: 0;
+  font-size: 0.4em;
+  vertical-align: super;
+  margin-left: 0.5rem;
+  transition: opacity 0.2s ease;
+  color: var(--accent-color);
+}
+
+.editable:hover .editIcon {
+  opacity: 1;
+}
+
+.editorWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  z-index: 100;
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  background: var(--bg-alt);
+  color: var(--text-main);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 1rem;
+  font-family: inherit;
+  font-size: inherit;
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btnSave {
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btnCancel {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.colorPicker {
+  width: 36px;
+  height: 36px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
