@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Syne, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import dynamic from 'next/dynamic';
+
+const CustomCursor = dynamic(() => import("@/components/CustomCursor"), { ssr: false });
 
 const syne = Syne({ 
   subsets: ["latin"],
@@ -18,8 +21,6 @@ export const metadata: Metadata = {
   title: "Creative Photography",
   description: "Capturando tus mejores momentos con estilo y profesionalismo.",
 };
-
-import CustomCursor from "@/components/CustomCursor";
 
 export default function RootLayout({
   children,
