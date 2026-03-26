@@ -94,16 +94,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.1) brightness(0.95);
+  filter: contrast(1.05) brightness(0.85) sepia(0.2);
+  transition: transform var(--transition-slow);
+}
+
+.heroImageContainer:hover .heroImage {
+  transform: scale(1.03);
 }
 
 .heroTitle {
-  font-size: clamp(3rem, 10vw, 10rem);
-  line-height: 0.95;
+  font-size: clamp(3rem, 10vw, 11rem);
+  line-height: 0.9;
   text-transform: uppercase;
   z-index: 3;
   mix-blend-mode: difference;
-  color: var(--text-main);
+  color: #fff;
 }
 
 .heroTitle span {
@@ -112,31 +117,33 @@
 
 .heroSubtitle {
   font-size: 1.25rem;
-  max-width: 400px;
+  max-width: 450px;
   margin-top: 2.5rem;
   color: var(--text-muted);
   font-weight: 400;
   z-index: 3;
+  line-height: 1.6;
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
   margin-top: 3rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   font-weight: 600;
   color: var(--text-main);
   padding-bottom: 5px;
-  border-bottom: 2px solid var(--accent-color);
-  transition: var(--transition-fast);
+  border-bottom: 1px solid var(--accent-color);
+  transition: all var(--transition-fast);
   z-index: 3;
   width: fit-content;
 }
 
 .ctaButton:hover {
   color: var(--accent-color);
+  border-bottom-width: 2px;
 }
 
 /* Contact Form Layout */
@@ -150,7 +157,7 @@
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   width: 100%;
 }
 
@@ -158,26 +165,32 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  position: relative;
 }
 
 .inputGroup label {
   font-family: var(--font-syne);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.inputGroup:focus-within label {
+  color: var(--accent-color);
 }
 
 .contactInput,
 .contactTextarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--text-muted);
+  border-bottom: 1px solid rgba(131, 123, 116, 0.4);
   color: var(--text-main);
-  padding: 0.8rem 0;
+  padding: 0.5rem 0;
   font-size: 1.1rem;
   font-family: var(--font-playfair);
-  transition: border-color 0.3s;
+  transition: border-color var(--transition-fast);
 }
 
 .contactInput:focus,
@@ -195,25 +208,26 @@
   background: var(--text-main);
   color: var(--bg-color);
   border: none;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
   font-family: var(--font-syne);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-weight: 500;
   cursor: pointer;
   margin-top: 1rem;
-  transition: all 0.3s;
+  transition: all var(--transition-fast);
   align-self: flex-start;
 }
 
 .formSubmit:hover {
   background: var(--accent-color);
   transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 /* Sections */
 .section {
-  padding: 10rem 5%;
+  padding: 8rem 5%;
   position: relative;
 }
 
@@ -223,14 +237,16 @@
 
 .sectionHeader {
   margin-bottom: 5rem;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .sectionTitle {
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
+
 
 /* Gallery Grid - Masonry/Asymmetric */
 .galleryGrid {

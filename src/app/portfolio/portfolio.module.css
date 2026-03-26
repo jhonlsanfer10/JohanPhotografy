@@ -1,0 +1,58 @@
+.portfolioMain {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  padding-bottom: 5rem;
+}
+
+.portfolioHeader {
+  padding: 12rem 5% 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.headerContent {
+  max-width: 800px;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.galleryContainer {
+  padding: 4rem 5%;
+}
+
+.minimalFooter {
+  text-align: center;
+  padding: 4rem 5%;
+  border-top: 1px solid var(--glass-border);
+}
+
+.minimalFooter a {
+  font-family: var(--font-syne);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
+}
+
+.minimalFooter a:hover {
+  color: var(--accent-color);
+}

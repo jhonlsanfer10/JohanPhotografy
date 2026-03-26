@@ -56,13 +56,13 @@ export default async function Home({ searchParams }: { searchParams: { lang?: st
         <div className={styles.heroContent}>
           <h1 className={`${styles.heroTitle} animate-clip`}>
             <span>
-              <EditableText contentKey={`hero_title_1_${lang}`} initialValue={getContent("hero_title_1", "Capturando")} initialColor={getContent(`hero_title_1_${lang}_color`, "inherit")} isAdmin={isAdmin} />
+              <EditableText contentKey={`hero_title_1_${lang}`} initialValue={getContent("hero_title_1", "Capturing")} initialColor={getContent(`hero_title_1_${lang}_color`, "inherit")} isAdmin={isAdmin} />
             </span>
-            <span className="font-serif text-accent" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '10%', display: 'block' }}>
-              <EditableText contentKey={`hero_title_2_${lang}`} initialValue={getContent("hero_title_2", "momentos")} initialColor={getContent(`hero_title_2_${lang}_color`, "inherit")} isAdmin={isAdmin} />
+            <span className="font-serif" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '12%', display: 'block', color: 'var(--accent-color)' }}>
+              <EditableText contentKey={`hero_title_2_${lang}`} initialValue={getContent("hero_title_2", "timeless")} initialColor={getContent(`hero_title_2_${lang}_color`, "inherit")} isAdmin={isAdmin} />
             </span>
             <span>
-              <EditableText contentKey={`hero_title_3_${lang}`} initialValue={getContent("hero_title_3", "Inolvidables")} initialColor={getContent(`hero_title_3_${lang}_color`, "inherit")} isAdmin={isAdmin} />
+              <EditableText contentKey={`hero_title_3_${lang}`} initialValue={getContent("hero_title_3", "Moments")} initialColor={getContent(`hero_title_3_${lang}_color`, "inherit")} isAdmin={isAdmin} />
             </span>
           </h1>
           <p className={`${styles.heroSubtitle} animate-fade-in`} style={{ animationDelay: '0.4s' }}>
@@ -82,10 +82,10 @@ export default async function Home({ searchParams }: { searchParams: { lang?: st
       <section id="portfolio" className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>
-            {lang === 'en' ? 'My' : 'Mi'} <span className="font-serif text-accent" style={{ textTransform: 'lowercase', fontStyle: 'italic' }}>{lang === 'en' ? 'Work' : 'Trabajo'}</span>
+            {lang === 'en' ? 'Selected' : 'Obras'} <span className="font-serif text-accent" style={{ textTransform: 'lowercase', fontStyle: 'italic' }}>{lang === 'en' ? 'Works' : 'Destacadas'}</span>
           </h2>
-          <p className="font-serif" style={{ fontSize: '1.5rem', color: 'var(--text-muted)' }}>
-            <EditableText contentKey={`portfolio_desc_${lang}`} initialValue={getContent("portfolio_desc", "Una curaduría de nuestras mejores historias visuales.")} initialColor={getContent(`portfolio_desc_${lang}_color`, "inherit")} adaptive={true} isAdmin={isAdmin} />
+          <p className="font-serif" style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }}>
+            <EditableText contentKey={`portfolio_desc_${lang}`} initialValue={getContent("portfolio_desc", "Una muestra de nuestra visión estética e historias cinematográficas.")} initialColor={getContent(`portfolio_desc_${lang}_color`, "inherit")} adaptive={true} isAdmin={isAdmin} />
           </p>
         </div>
         
@@ -113,6 +113,12 @@ export default async function Home({ searchParams }: { searchParams: { lang?: st
           )}
           
           {isAdmin && <AddMediaModal />}
+        </div>
+        
+        <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+          <Link href="/portfolio" className={styles.formSubmit} style={{ display: 'inline-block' }}>
+            {lang === 'en' ? 'View Full Portfolio' : 'Ver Portafolio Completo'}
+          </Link>
         </div>
       </section>
 

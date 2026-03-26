@@ -3,32 +3,43 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(20, 20, 20, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 2.5rem;
   border-radius: 50px;
   display: flex;
   align-items: center;
   gap: 3rem;
   z-index: 9999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.toolbar:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
 }
 
 .brand {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  font-family: var(--font-syne);
 }
 
 .brand span {
   color: var(--accent-color);
+  font-style: italic;
+  font-family: var(--font-playfair);
+  text-transform: lowercase;
+  font-size: 1rem;
 }
 
 .actions {
@@ -38,17 +49,20 @@
 
 .buttonOutline {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.5);
-  color: #fff;
+  border: 1px solid var(--text-muted);
+  color: var(--text-main);
   padding: 0.5rem 1.5rem;
   border-radius: 30px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
 .buttonOutline:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: #fff;
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
 }

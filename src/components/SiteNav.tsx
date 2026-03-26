@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteNav.module.css";
 
@@ -16,12 +17,14 @@ export default function SiteNav() {
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>JOHAN PHOTOGRAFY</div>
+      <div className={styles.logo}>
+        <Link href="/">JOHAN PHOTOGRAFY</Link>
+      </div>
       <div className={styles.navActions}>
         <div className={styles.navLinks}>
-          <a href="#portfolio">{lang === "en" ? "Portfolio" : "Portafolio"}</a>
-          <a href="#services">{lang === "en" ? "Services" : "Servicios"}</a>
-          <a href="#contact">{lang === "en" ? "Contact" : "Contacto"}</a>
+          <Link href="/portfolio">{lang === "en" ? "Portfolio" : "Portafolio"}</Link>
+          <a href="/#services">{lang === "en" ? "Services" : "Servicios"}</a>
+          <a href="/#contact">{lang === "en" ? "Contact" : "Contacto"}</a>
         </div>
 
         <div className={styles.tools}>

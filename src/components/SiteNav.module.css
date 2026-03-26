@@ -2,13 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5%;
-  position: absolute;
+  padding: 1.5rem 5%;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   color: var(--text-main);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: all var(--transition-slow);
 }
 
 .navActions {
@@ -19,27 +24,48 @@
 
 .logo {
   font-family: var(--font-syne);
-  font-weight: 800;
-  font-size: 1.5rem;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+}
+.logo a {
+  transition: color var(--transition-fast);
+}
+.logo a:hover {
+  color: var(--accent-color);
 }
 
 .navLinks {
   display: flex;
   gap: 3rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   font-weight: 600;
 }
 
 .navLinks a {
   transition: var(--transition-fast);
+  position: relative;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--accent-color);
+  transition: width var(--transition-fast);
 }
 
 .navLinks a:hover {
   color: var(--accent-color);
+}
+.navLinks a:hover::after {
+  width: 100%;
 }
 
 .tools {

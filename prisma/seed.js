@@ -1,41 +1,24 @@
-const { PrismaClient } = require('@prisma/client')
-const bcrypt = require('bcryptjs')
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
+
+const prisma = new PrismaClient();
 
 async function main() {
-  const hashedPassword = await bcrypt.hash('admin123', 10)
-  const admin = await prisma.user.upsert({
-    where: { email: 'admin@example.com' },
+  const hashedPassword = await bcrypt.hash('admin123', 12);
+  
+  const user = await prisma.user.upsert({
+    where: { email: 'admin@photografy.studio' },
     update: {},
     create: {
-      email: 'admin@example.com',
-      password: hashedPassword,
+      email: 'admin@photografy.studio',
       name: 'Admin',
+      password: hashedPassword,
     },
-  })
-  console.log('Admin user created:', admin.email)
-
-  // Seed some initial content keys
-  const defaultText = [
-    { key: 'hero_title', value: 'Capturando los Mejores Momentos' },
-    { key: 'hero_subtitle', value: 'Fotografía Profesional' },
-    { key: 'about_text', value: 'Soy un fotógrafo profesional apasionado por capturar la esencia de cada momento.' }
-  ]
-
-  for (const text of defaultText) {
-    await prisma.content.upsert({
-      where: { key: text.key },
-      update: {},
-      create: text,
-    })
-  }
+  });
+  
+  console.log('✅ Admin creado:', user.email);
 }
 
 main()
-  .catch((e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

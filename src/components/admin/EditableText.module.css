@@ -37,33 +37,60 @@
   min-height: 120px;
   background: var(--bg-alt);
   color: var(--text-main);
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 1rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1.2rem;
   font-family: inherit;
   font-size: inherit;
   resize: vertical;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.textarea:focus {
+  border-color: var(--accent-color);
 }
 
 .actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .btnSave {
-  background: var(--accent-color);
-  color: #fff;
+  background: var(--text-main);
+  color: var(--bg-color);
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-family: var(--font-syne);
+  transition: all var(--transition-fast);
+}
+
+.btnSave:hover {
+  background: var(--accent-color);
 }
 
 .btnCancel {
   background: transparent;
   color: var(--text-main);
-  border: 1px solid rgba(0,0,0,0.2);
-  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-main);
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-family: var(--font-syne);
+  transition: all var(--transition-fast);
+}
+
+.btnCancel:hover {
+  background: var(--bg-alt);
 }
 
 .colorPicker {

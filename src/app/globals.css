@@ -1,22 +1,24 @@
 :root {
-  --bg-color: #FDFBF7; /* Pristine Alabaster/Ivory */
-  --bg-alt: #F4F1EA;
-  --text-main: #1A1A1A; /* Deep Charcoal */
-  --text-muted: #666666;
-  --accent-color: #E05236; /* Cinematic Terracotta */
-  --glass-bg: rgba(253, 251, 247, 0.9);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --bg-color: #F8F5F0; /* Warm Vintage Ivory */
+  --bg-alt: #EFECE6; /* Antique White */
+  --text-main: #2A2826; /* Deep Vintage Espresso */
+  --text-muted: #837B74; /* Soft Warm Gray */
+  --accent-color: #C05842; /* Cinematic Muted Terracotta */
+  --glass-bg: rgba(248, 245, 240, 0.75);
+  --glass-border: rgba(42, 40, 38, 0.08);
   
-  --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 [data-theme='dark'] {
-  --bg-color: #101010; /* Pitch dark canvas */
-  --bg-alt: #161616; /* Subdued card background */
-  --text-main: #FDFBF7; /* Soft Ivory for reading */
-  --text-muted: #A0A0A0; /* Mid gray */
-  /* Accent color remains the same or slightly richer to pop on black */
+  --bg-color: #0E0D0C; /* Pitch Dark Charcoal */
+  --bg-alt: #141312; /* Subdued card background */
+  --text-main: #F4EFEB; /* Soft Ivory */
+  --text-muted: #8A837E; /* Mid gray */
+  --accent-color: #D67763; /* Brightened Vintage Terracotta */
+  --glass-bg: rgba(14, 13, 12, 0.75);
+  --glass-border: rgba(244, 239, 235, 0.05);
 }
 
 html,
