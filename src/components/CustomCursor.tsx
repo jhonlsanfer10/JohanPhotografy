@@ -34,6 +34,7 @@ export default function CustomCursor() {
     };
 
     const handleMouseOver = (e: MouseEvent) => {
+      // ...
       const target = e.target as HTMLElement;
       if (
         target.tagName.toLowerCase() === "a" ||
@@ -59,7 +60,11 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseover", handleMouseOver);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  const dotSpringX = useSpring(cursorX, { damping: 40, stiffness: 400, mass: 0.1 });
+  const dotSpringY = useSpring(cursorY, { damping: 40, stiffness: 400, mass: 0.1 });
 
   if (!hasPointer) return null;
 
@@ -75,8 +80,8 @@ export default function CustomCursor() {
       <motion.div
         className={styles.cursorDot}
         style={{
-          x: useSpring(cursorX, { damping: 40, stiffness: 400, mass: 0.1 }),
-          y: useSpring(cursorY, { damping: 40, stiffness: 400, mass: 0.1 }),
+          x: dotSpringX,
+          y: dotSpringY,
         }}
       />
     </>

@@ -37,7 +37,7 @@ export default function EditableText({
         await updateContent(`${contentKey}_color`, color);
       }
       setIsEditing(false);
-    } catch (e) {
+    } catch (_e) {
       alert("Error guardando el contenido. Revisa tu conexión.");
     }
     setIsSaving(false);

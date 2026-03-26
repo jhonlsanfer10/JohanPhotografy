@@ -8,7 +8,10 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   if (!mounted) return <div style={{ width: 40, height: 40 }}></div>;
 

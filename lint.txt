@@ -1,0 +1,74 @@
+
+> photografy@0.1.0 lint
+> eslint
+
+
+C:\Users\usern\Desktop\Photografy\prisma\seed.js
+  1:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:16  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\usern\Desktop\Photografy\src\app\api\auth\[...nextauth]\route.ts
+  48:26  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\usern\Desktop\Photografy\src\app\page.tsx
+  56:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\usern\Desktop\Photografy\src\components\CustomCursor.tsx
+  62:6   warning  React Hook useEffect has missing dependencies: 'cursorX' and 'cursorY'. Either include them or remove the dependency array                                                                   react-hooks/exhaustive-deps
+  78:14  error    React Hook "useSpring" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+  79:14  error    React Hook "useSpring" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+C:\Users\usern\Desktop\Photografy\src\components\PortfolioGallery.tsx
+   62:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  101:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\usern\Desktop\Photografy\src\components\SiteNav.tsx
+  26:11  error  Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  27:11  error  Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+C:\Users\usern\Desktop\Photografy\src\components\ThemeProvider.tsx
+  11:96  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  28:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\usern\Desktop\Photografy\src\components\ThemeProvider.tsx:28:7
+  26 |     const saved = localStorage.getItem("theme") as Theme | null;
+  27 |     if (saved) {
+> 28 |       setTheme(saved);
+     |       ^^^^^^^^ Avoid calling setState() directly within an effect
+  29 |     } else {
+  30 |       setTheme(defaultTheme);
+  31 |     }  react-hooks/set-state-in-effect
+  32:6   warning  React Hook useEffect has a missing dependency: 'setTheme'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+
+C:\Users\usern\Desktop\Photografy\src\components\ThemeToggle.tsx
+  11:19  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\usern\Desktop\Photografy\src\components\ThemeToggle.tsx:11:19
+   9 |   const { theme, setTheme } = useTheme();
+  10 |
+> 11 |   useEffect(() => setMounted(true), []);
+     |                   ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  12 |
+  13 |   if (!mounted) return <div style={{ width: 40, height: 40 }}></div>;
+  14 |  react-hooks/set-state-in-effect
+
+C:\Users\usern\Desktop\Photografy\src\components\admin\AddMediaModal.tsx
+  94:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\usern\Desktop\Photografy\src\components\admin\EditableText.tsx
+  40:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+Ô£û 17 problems (10 errors, 7 warnings)
+

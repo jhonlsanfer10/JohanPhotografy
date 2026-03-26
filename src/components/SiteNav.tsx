@@ -23,8 +23,8 @@ export default function SiteNav() {
       <div className={styles.navActions}>
         <div className={styles.navLinks}>
           <Link href="/portfolio">{lang === "en" ? "Portfolio" : "Portafolio"}</Link>
-          <a href="/#services">{lang === "en" ? "Services" : "Servicios"}</a>
-          <a href="/#contact">{lang === "en" ? "Contact" : "Contacto"}</a>
+          <Link href="/#services">{lang === "en" ? "Services" : "Servicios"}</Link>
+          <Link href="/#contact">{lang === "en" ? "Contact" : "Contacto"}</Link>
         </div>
 
         <div className={styles.tools}>

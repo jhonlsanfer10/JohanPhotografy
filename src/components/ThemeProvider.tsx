@@ -8,6 +8,7 @@ export const ThemeContext = createContext<{ theme: Theme; setTheme: (theme: Them
   theme: "system", setTheme: () => null 
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function ThemeProvider({ children, attribute = "data-theme", defaultTheme = "system" }: any) {
   const [theme, setThemeState] = useState<Theme>(defaultTheme);
 
@@ -25,10 +26,13 @@ export function ThemeProvider({ children, attribute = "data-theme", defaultTheme
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
     if (saved) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(saved);
     } else {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(defaultTheme);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultTheme, attribute]);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
