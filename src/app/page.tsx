@@ -22,6 +22,9 @@ import AddServiceModal from "@/components/admin/AddServiceModal";
 import DeleteServiceButton from "@/components/admin/DeleteServiceButton";
 import SiteNav from "@/components/SiteNav";
 
+import StaggerText from "@/components/animations/StaggerText";
+import FadeIn from "@/components/animations/FadeIn";
+
 export const dynamic = "force-dynamic";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ lang?: string }> | { lang?: string } }) {
@@ -49,51 +52,62 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
       <SiteNav />
 
       <header className={styles.hero}>
-        <div className={`${styles.heroImageContainer} animate-clip`}>
+        <FadeIn delay={0.1} direction="down" className={styles.heroImageContainer}>
           <img 
             src={getContent("hero_image", "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=2000&auto=format&fit=crop")}
             alt="Hero Background" 
             className={styles.heroImage} 
+            style={{ transform: "scale(1.05)" }}
           />
-        </div>
+        </FadeIn>
         
         <div className={styles.heroContent}>
-          <h1 className={`${styles.heroTitle} animate-clip`}>
-            <span>
-              <EditableText contentKey={`hero_title_1_${lang}`} initialValue={getContent("hero_title_1", "Capturing")} initialColor={getContent(`hero_title_1_${lang}_color`, "inherit")} isAdmin={isAdmin} />
-            </span>
-            <span className="font-serif" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '12%', display: 'block', color: 'var(--accent-color)' }}>
-              <EditableText contentKey={`hero_title_2_${lang}`} initialValue={getContent("hero_title_2", "timeless")} initialColor={getContent(`hero_title_2_${lang}_color`, "inherit")} isAdmin={isAdmin} />
-            </span>
-            <span>
-              <EditableText contentKey={`hero_title_3_${lang}`} initialValue={getContent("hero_title_3", "Moments")} initialColor={getContent(`hero_title_3_${lang}_color`, "inherit")} isAdmin={isAdmin} />
-            </span>
-          </h1>
-          <p className={`${styles.heroSubtitle} animate-fade-in`} style={{ animationDelay: '0.4s' }}>
-            <EditableText 
-              contentKey={`hero_subtitle_${lang}`} 
-              initialValue={getContent("hero_subtitle", "Transformamos instantes efímeros en obras de arte eternas. Fotografía de autor para almas rebeldes y elegantes.")} 
-              initialColor={getContent(`hero_subtitle_${lang}_color`, "inherit")}
-              isAdmin={isAdmin} 
+          <h1 className={styles.heroTitle}>
+            <StaggerText 
+              text={getContent("hero_title_1", "Capturing")} 
+              className="block" 
             />
-          </p>
-          <a href="#contact" className={`${styles.ctaButton} animate-fade-in`} style={{ animationDelay: '0.6s' }}>
-            <EditableText contentKey={`hero_cta_${lang}`} initialValue={getContent("hero_cta", "Descubre Más")} isAdmin={isAdmin} />
-          </a>
+            <span className="font-serif block" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '12%', color: 'var(--accent-color)' }}>
+              <StaggerText 
+                text={getContent("hero_title_2", "timeless")} 
+              />
+            </span>
+            <StaggerText 
+              text={getContent("hero_title_3", "Moments")} 
+              className="block" 
+            />
+          </h1>
+          <FadeIn delay={0.5} direction="up" className={styles.heroSubtitle}>
+            <p>
+              <EditableText 
+                contentKey={`hero_subtitle_${lang}`} 
+                initialValue={getContent("hero_subtitle", "Transformamos instantes efímeros en obras de arte eternas. Fotografía de autor para almas rebeldes y elegantes.")} 
+                initialColor={getContent(`hero_subtitle_${lang}_color`, "inherit")}
+                isAdmin={isAdmin} 
+              />
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.7} direction="up">
+            <a href="#contact" className={`${styles.ctaButton} clickable`}>
+              <EditableText contentKey={`hero_cta_${lang}`} initialValue={getContent("hero_cta", "Descubre Más")} isAdmin={isAdmin} />
+            </a>
+          </FadeIn>
         </div>
       </header>
 
       <section id="portfolio" className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>
-            {lang === 'en' ? 'Selected' : 'Obras'} <span className="font-serif text-accent" style={{ textTransform: 'lowercase', fontStyle: 'italic' }}>{lang === 'en' ? 'Works' : 'Destacadas'}</span>
-          </h2>
-          <p className="font-serif" style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }}>
-            <EditableText contentKey={`portfolio_desc_${lang}`} initialValue={getContent("portfolio_desc", "Una muestra de nuestra visión estética e historias cinematográficas.")} initialColor={getContent(`portfolio_desc_${lang}_color`, "inherit")} adaptive={true} isAdmin={isAdmin} />
-          </p>
-        </div>
+        <FadeIn direction="up">
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              {lang === 'en' ? 'Selected' : 'Obras'} <span className="font-serif text-accent" style={{ textTransform: 'lowercase', fontStyle: 'italic' }}>{lang === 'en' ? 'Works' : 'Destacadas'}</span>
+            </h2>
+            <p className="font-serif" style={{ fontSize: '1.25rem', color: 'var(--text-muted)' }}>
+              <EditableText contentKey={`portfolio_desc_${lang}`} initialValue={getContent("portfolio_desc", "Una muestra de nuestra visión estética e historias cinematográficas.")} initialColor={getContent(`portfolio_desc_${lang}_color`, "inherit")} adaptive={true} isAdmin={isAdmin} />
+            </p>
+          </div>
+        </FadeIn>
         
-        <div className={styles.galleryGrid}>
+        <FadeIn delay={0.2} direction="up" className={styles.galleryGrid}>
           {media.length > 0 ? (
             media.map((m) => (
               <div key={m.id} className={styles.galleryItem}>
@@ -117,26 +131,26 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
           )}
           
           {isAdmin && <AddMediaModal />}
-        </div>
+        </FadeIn>
         
-        <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+        <FadeIn delay={0.4} direction="up" style={{ marginTop: '4rem', textAlign: 'center' }}>
           <Link href="/portfolio" className={styles.formSubmit} style={{ display: 'inline-block' }}>
             {lang === 'en' ? 'View Full Portfolio' : 'Ver Portafolio Completo'}
           </Link>
-        </div>
+        </FadeIn>
       </section>
 
       <section id="services" className={`${styles.section} ${styles.altBackground}`}>
-        <div className={styles.sectionHeader}>
+        <FadeIn direction="up" className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>{lang === 'en' ? 'Services' : 'Servicios'}</h2>
-        </div>
+        </FadeIn>
         <div className={styles.servicesGrid}>
-          {services.map(s => (
-            <div key={s.id} className={styles.serviceCard} style={{position: 'relative'}}>
+          {services.map((s, index) => (
+            <FadeIn delay={index * 0.1} direction="up" key={s.id} className={styles.serviceCard} style={{position: 'relative'}}>
               {isAdmin && <DeleteServiceButton id={s.id} />}
               <h3>{s.title}</h3>
               <p>{s.description}</p>
-            </div>
+            </FadeIn>
           ))}
           
           {services.length === 0 && !isAdmin && (

@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "Capturando tus mejores momentos con estilo y profesionalismo.",
 };
 
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,6 +30,7 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body className={`${syne.variable} ${playfair.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
+          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>
