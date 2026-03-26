@@ -1,6 +1,6 @@
-import { prisma } from "@/lib/prisma";
-import PortfolioGallery from "@/components/PortfolioGallery";
-import SiteNav from "@/components/SiteNav";
+import { prisma } from "../../lib/prisma";
+import PortfolioGallery from "../../components/PortfolioGallery";
+import SiteNav from "../../components/SiteNav";
 import styles from "./portfolio.module.css";
 import Link from "next/link";
 

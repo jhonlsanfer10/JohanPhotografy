@@ -150,6 +150,7 @@
   cursor: pointer;
   transition: transform 0.3s;
   z-index: 10000;
+  padding: 0.5rem;
 }
 
 .closeBtn:hover {
@@ -158,17 +159,19 @@
 
 .lightboxContent {
   position: relative;
-  max-width: 90vw;
+  width: 90vw;
   max-height: 85vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   cursor: default;
 }
 
 .lightboxContent img,
 .lightboxContent video {
   max-width: 100%;
-  max-height: 80vh;
+  max-height: 75vh;
   object-fit: contain;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
@@ -177,11 +180,12 @@
   margin-top: 1.5rem;
   text-align: center;
   color: #fff;
+  width: 100%;
 }
 
 .lightboxCaption h3 {
   font-family: var(--font-playfair);
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 5vw, 1.5rem);
   font-weight: 400;
   margin-bottom: 0.2rem;
 }
@@ -193,3 +197,22 @@
   letter-spacing: 0.15em;
   color: rgba(255,255,255,0.7);
 }
+
+@media (max-width: 600px) {
+  .closeBtn {
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+  }
+  
+  .lightboxContent {
+    width: 95vw;
+  }
+  
+  .masonryGrid {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
