@@ -9,12 +9,17 @@ export const metadata = {
   description: "Una colección curada de nuestras historias visuales.",
 };
 
-export default async function PortfolioPage({ searchParams }: { searchParams: { lang?: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function PortfolioPage({ searchParams }: { searchParams: Promise<{ lang?: string }> | { lang?: string } }) {
+  // Handle Next.js 15+ Async searchParams safely
+  const resolvedParams = await Promise.resolve(searchParams);
+  const lang = resolvedParams?.lang === "en" ? "en" : "es";
+
   const media = await prisma.media.findMany({
     orderBy: { createdAt: "desc" },
   });
-  
-  const lang = searchParams?.lang === "en" ? "en" : "es";
+
 
   return (
     <main className={styles.portfolioMain}>

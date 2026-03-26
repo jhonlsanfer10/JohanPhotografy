@@ -22,10 +22,14 @@ import AddServiceModal from "@/components/admin/AddServiceModal";
 import DeleteServiceButton from "@/components/admin/DeleteServiceButton";
 import SiteNav from "@/components/SiteNav";
 
-export default async function Home({ searchParams }: { searchParams: { lang?: string } }) {
+export const dynamic = "force-dynamic";
+
+export default async function Home({ searchParams }: { searchParams: Promise<{ lang?: string }> | { lang?: string } }) {
   const session = await getServerSession(authOptions);
   const isAdmin = !!session;
-  const lang = searchParams?.lang === 'en' ? 'en' : 'es';
+  
+  const resolvedParams = await Promise.resolve(searchParams);
+  const lang = resolvedParams?.lang === 'en' ? 'en' : 'es';
 
   const [media, services, content] = await Promise.all([
     prisma.media.findMany({ orderBy: { createdAt: 'desc' }, take: isAdmin ? undefined : 6 }),
