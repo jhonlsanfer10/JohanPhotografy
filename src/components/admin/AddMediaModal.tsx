@@ -31,11 +31,8 @@ export default function AddMediaModal() {
       try {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "photografy_uploads");
 
-        const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dxlmdzkje";
-        
-        const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`, {
+        const res = await fetch("/api/upload", {
           method: "POST",
           body: formData,
         });
@@ -48,7 +45,7 @@ export default function AddMediaModal() {
           setIsOpen(false);
           reset();
         } else {
-          alert("Error subiendo el archivo: " + (data.error?.message || "Desconocido"));
+          alert("Error subiendo el archivo: " + (data.error || "Desconocido"));
         }
       } catch (err) {
         console.error("Upload error:", err);
