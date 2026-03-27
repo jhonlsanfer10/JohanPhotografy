@@ -70,3 +70,12 @@ model ClientImage {
   gallery         ClientGallery @relation(fields: [clientGalleryId], references: [id], onDelete: Cascade)
   createdAt       DateTime      @default(now())
 }
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

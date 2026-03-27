@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Syne, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import CursorWrapper from "@/components/CursorWrapper";
 
 const syne = Syne({ 
   subsets: ["latin"],
@@ -29,7 +28,6 @@ export default function RootLayout({
     <html lang="es" suppressHydrationWarning>
       <body className={`${syne.variable} ${playfair.variable}`}>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem>
-          <CursorWrapper />
           {children}
         </ThemeProvider>
       </body>

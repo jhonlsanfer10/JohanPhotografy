@@ -14,6 +14,15 @@ const LinkedinIcon = () => (
 const TwitterIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
 );
+const FacebookIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+);
+const TikTokIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+);
+const YoutubeIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.57 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+);
 
 import AdminToolbar from "@/components/admin/AdminToolbar";
 import EditableText from "@/components/admin/EditableText";
@@ -25,6 +34,7 @@ import SiteNav from "@/components/SiteNav";
 
 import StaggerText from "@/components/animations/StaggerText";
 import FadeIn from "@/components/animations/FadeIn";
+import ContactForm from "@/components/ContactForm";
 
 export const dynamic = "force-dynamic";
 
@@ -178,23 +188,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
              </div>
            </div>
 
-           <form className={styles.contactForm}>
-             <div className={styles.inputGroup}>
-               <label htmlFor="name">{lang === 'en' ? 'Your Name' : 'Tu Nombre'}</label>
-               <input type="text" id="name" className={styles.contactInput} required />
-             </div>
-             <div className={styles.inputGroup}>
-               <label htmlFor="email">{lang === 'en' ? 'Your Email' : 'Tu Correo'}</label>
-               <input type="email" id="email" className={styles.contactInput} required />
-             </div>
-             <div className={styles.inputGroup}>
-               <label htmlFor="message">{lang === 'en' ? 'Message' : 'Mensaje'}</label>
-               <textarea id="message" className={styles.contactTextarea} required></textarea>
-             </div>
-             <button type="submit" className={styles.formSubmit}>
-               {lang === 'en' ? 'Send Message' : 'Enviar Mensaje'}
-             </button>
-           </form>
+           <ContactForm lang={lang} />
          </div>
       </section>
 
@@ -212,17 +206,30 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
           </div>
           <div className={styles.footerSocials}>
             <h4>{lang === 'en' ? 'Follow Us' : 'Síguenos'}</h4>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <a href={getContent("social_instagram_url", "#")} target="_blank" rel="noopener noreferrer"><InstagramIcon /></a>
-              <a href={getContent("social_linkedin_url", "#")} target="_blank" rel="noopener noreferrer"><LinkedinIcon /></a>
-              <a href={getContent("social_twitter_url", "#")} target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>
+            <div className={styles.socialGrid}>
+              <a href={getContent("social_instagram_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="Instagram"><InstagramIcon /></a>
+              <a href={getContent("social_linkedin_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="LinkedIn"><LinkedinIcon /></a>
+              <a href={getContent("social_twitter_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="X / Twitter"><TwitterIcon /></a>
+              <a href={getContent("social_facebook_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="Facebook"><FacebookIcon /></a>
+              <a href={getContent("social_tiktok_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="TikTok"><TikTokIcon /></a>
+              <a href={getContent("social_youtube_url", "#")} target="_blank" rel="noopener noreferrer" className={styles.socialLink} title="YouTube"><YoutubeIcon /></a>
             </div>
             {isAdmin && (
-               <div style={{marginTop: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.75rem'}}>
-                 <div style={{display:'flex', alignItems:'center', gap:'0.5rem'}}><InstagramIcon /> <EditableText contentKey="social_instagram_url" initialValue={getContent("social_instagram_url", "URL Instagram")} isAdmin={true} /></div>
-                 <div style={{display:'flex', alignItems:'center', gap:'0.5rem'}}><LinkedinIcon /> <EditableText contentKey="social_linkedin_url" initialValue={getContent("social_linkedin_url", "URL LinkedIn")} isAdmin={true} /></div>
-                 <div style={{display:'flex', alignItems:'center', gap:'0.5rem'}}><TwitterIcon /> <EditableText contentKey="social_twitter_url" initialValue={getContent("social_twitter_url", "URL Twitter")} isAdmin={true} /></div>
-               </div>
+              <div style={{marginTop: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.75rem'}}>
+                {[
+                  { icon: <InstagramIcon />, key: "social_instagram_url", label: "Instagram" },
+                  { icon: <LinkedinIcon />, key: "social_linkedin_url", label: "LinkedIn" },
+                  { icon: <TwitterIcon />, key: "social_twitter_url", label: "Twitter" },
+                  { icon: <FacebookIcon />, key: "social_facebook_url", label: "Facebook" },
+                  { icon: <TikTokIcon />, key: "social_tiktok_url", label: "TikTok" },
+                  { icon: <YoutubeIcon />, key: "social_youtube_url", label: "YouTube" },
+                ].map(({ icon, key, label }) => (
+                  <div key={key} style={{display:'flex', alignItems:'center', gap:'0.5rem'}}>
+                    {icon}
+                    <EditableText contentKey={key} initialValue={getContent(key, `URL ${label}`)} isAdmin={true} />
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>
