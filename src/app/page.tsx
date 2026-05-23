@@ -124,7 +124,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
               <div key={m.id} className={styles.galleryItem}>
                 {isAdmin && <DeleteMediaButton id={m.id} />}
                 {m.type === "IMAGE" || m.url.match(/\.(jpeg|jpg|gif|png)$/i) ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={m.url} alt={m.title} className={styles.galleryImage} />
                 ) : (
                   <video src={m.url} className={styles.galleryImage} autoPlay muted loop />

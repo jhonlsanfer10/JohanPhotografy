@@ -29,7 +29,6 @@ export function ThemeProvider({ children, attribute = "data-theme", defaultTheme
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(saved);
     } else {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(defaultTheme);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

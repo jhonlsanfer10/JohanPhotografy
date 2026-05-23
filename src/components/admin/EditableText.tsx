@@ -37,7 +37,7 @@ export default function EditableText({
         await updateContent(`${contentKey}_color`, color);
       }
       setIsEditing(false);
-    } catch (_e) {
+    } catch {
       alert("Error guardando el contenido. Revisa tu conexión.");
     }
     setIsSaving(false);
@@ -80,7 +80,11 @@ export default function EditableText({
           <button onClick={handleSave} disabled={isSaving} className={styles.btnSave}>
             {isSaving ? "Guardando..." : "Guardar"}
           </button>
-          <button onClick={() => setIsEditing(false)} className={styles.btnCancel}>Cancelar</button>
+          <button onClick={() => {
+            setValue(initialValue);
+            setColor(initialColor);
+            setIsEditing(false);
+          }} className={styles.btnCancel}>Cancelar</button>
         </div>
       </div>
     );
