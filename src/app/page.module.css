@@ -502,6 +502,30 @@
 
 /* Absolute Responsiveness overrides */
 @media (max-width: 900px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 8rem 5% 4rem;
+    gap: 3rem;
+  }
+
+  .heroContent {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .heroImageContainer {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    right: auto;
+    bottom: auto;
+  }
+
   .heroTitle {
     font-size: 15vw;
   }
@@ -509,6 +533,12 @@
   .heroSubtitle {
     font-size: 1rem;
     max-width: 100%;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 2.5rem;
   }
 
   .galleryGrid {

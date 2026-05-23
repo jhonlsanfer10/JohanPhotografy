@@ -56,11 +56,20 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
            content.find(c => c.key === key)?.value || fallback;
   };
 
+  const logoType = getContent("site_logo_type", "TEXT") as "TEXT" | "IMAGE";
+  const logoText = getContent("site_logo_text", "JOHAN PHOTOGRAFY");
+  const logoImage = getContent("site_logo_image_url", "");
+
   return (
     <main className={styles.main}>
       {isAdmin && <AdminToolbar />}
 
-      <SiteNav />
+      <SiteNav 
+        isAdmin={isAdmin}
+        logoType={logoType}
+        logoText={logoText}
+        logoImage={logoImage}
+      />
 
       <header className={styles.hero}>
         <FadeIn delay={0.1} direction="down" className={styles.heroImageContainer}>
@@ -74,19 +83,45 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ l
         
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>
-            <StaggerText 
-              text={getContent("hero_title_1", "Capturing")} 
-              className="block" 
-            />
-            <span className="font-serif block" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '12%', color: 'var(--accent-color)' }}>
-              <StaggerText 
-                text={getContent("hero_title_2", "timeless")} 
+            {isAdmin ? (
+              <EditableText 
+                contentKey={`hero_title_1_${lang}`} 
+                initialValue={getContent("hero_title_1", "Capturing")} 
+                isAdmin={true} 
+                className="block"
               />
+            ) : (
+              <StaggerText 
+                text={getContent("hero_title_1", "Capturing")} 
+                className="block" 
+              />
+            )}
+            <span className="font-serif block" style={{ textTransform: 'lowercase', fontStyle: 'italic', marginLeft: '12%', color: 'var(--accent-color)' }}>
+              {isAdmin ? (
+                <EditableText 
+                  contentKey={`hero_title_2_${lang}`} 
+                  initialValue={getContent("hero_title_2", "timeless")} 
+                  isAdmin={true} 
+                />
+              ) : (
+                <StaggerText 
+                  text={getContent("hero_title_2", "timeless")} 
+                />
+              )}
             </span>
-            <StaggerText 
-              text={getContent("hero_title_3", "Moments")} 
-              className="block" 
-            />
+            {isAdmin ? (
+              <EditableText 
+                contentKey={`hero_title_3_${lang}`} 
+                initialValue={getContent("hero_title_3", "Moments")} 
+                isAdmin={true} 
+                className="block"
+              />
+            ) : (
+              <StaggerText 
+                text={getContent("hero_title_3", "Moments")} 
+                className="block" 
+              />
+            )}
           </h1>
           <FadeIn delay={0.5} direction="up" className={styles.heroSubtitle}>
             <p>
